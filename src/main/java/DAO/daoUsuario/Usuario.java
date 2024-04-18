@@ -1,4 +1,4 @@
-package DAO.daousuario;
+package DAO.daoUsuario;
 
 import java.util.Objects;
 

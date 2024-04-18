@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class MainComprobacionSinglenton {
+public class Main {
     public static void main(String[] args) {
         try (Connection connection1 = EstablecerConexion.getEstablecerConexion().getConexion();
              Connection connection2 = EstablecerConexion.getEstablecerConexion().getConexion();

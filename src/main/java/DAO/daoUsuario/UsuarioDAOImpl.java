@@ -1,4 +1,4 @@
-package DAO.daousuario;
+package DAO.daoUsuario;
 
 import DAO.EstablecerConexion;
 
@@ -37,25 +37,27 @@ public class UsuarioDAOImpl implements UsuariosDAO {
 
     @Override
     public boolean annadirUsuario(Usuario usuario) throws SQLException {
-        String sql = " INSERT INTO mobile VALUES ('" + usuario.getEmail() + "', '"
+        String sql = " INSERT INTO USUARIOS VALUES ('" + usuario.getEmail() + "', '"
                 + usuario.getTelefono() + "'," + usuario.getNomapell() + "'" + usuario.getDireccion() + "''" + usuario.getContrasenna() + "' );";
-        statement = conectar.createStatement();
-        int resultado = statement.executeUpdate(sql);
+        preparedStatement = conectar.prepareStatement(sql);
+        int resultado = preparedStatement.executeUpdate();
         return resultado != 0;
     }
 
     @Override
     public boolean borrarPersonaPorTelefono(String telefono) throws SQLException {
         String sql = "DELETE FROM USUARIOS WHERE TELEFONO = '" + telefono + "';";
-        statement = conectar.createStatement();
-        int resultado = statement.executeUpdate(sql);
+        PreparedStatement prepareStatement = conectar.prepareStatement(sql);
+        prepareStatement.setString(1, telefono);
+        int resultado = prepareStatement.executeUpdate();
         return resultado != 0;
     }
 
     @Override
     public boolean actualizarUsuario(String email, String telefono,String nomapell, String direccion, String contrasenna) throws SQLException {
-        /*String sql = "UPDATE USUARIOS SET EMAIL = '" + email + "', NOMAPELL ='" + nomapell+ "', DIRECCION = '" + direccion + "',CONTRASENNA = '" + contrasenna + "' WHERE TELEFONO = '" + telefono + "';";
+        String sql = "UPDATE USUARIOS SET EMAIL = '" + email + "', NOMAPELL ='" + nomapell+ "', DIRECCION = '" + direccion + "',CONTRASENNA = '" + contrasenna + "' WHERE TELEFONO = '" + telefono + "';";
         PreparedStatement prepareStatement = conectar.prepareStatement(sql);
-        return prepareStatement != 0;*/ return true;
+        int actualizarDatos = preparedStatement.executeUpdate();
+        return actualizarDatos > 0;
     }
 }
