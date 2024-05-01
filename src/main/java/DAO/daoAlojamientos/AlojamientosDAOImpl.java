@@ -26,7 +26,7 @@ public class AlojamientosDAOImpl implements AlojamientosDAO {
             String NOMBRE = resultSet.getString("NOMBRE");
             String DIRECCION = resultSet.getString("DIRECCION");
             TipoAlojamiento TIPO_ALOJAMIENTO = TipoAlojamiento.valueOf(resultSet.getString("TIPO_ALOJAMIENTO"));
-            alojamiento =new Alojamientos(ID_ALOJAMIENTO,NOMBRE,DIRECCION,TIPO_ALOJAMIENTO);
+            alojamiento =new Alojamientos();
             alojamientos.add(alojamiento);
         }
         return alojamientos;    }
