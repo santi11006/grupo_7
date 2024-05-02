@@ -1,7 +1,6 @@
 package DAO.daoHoteles;
 
 import DAO.EstablecerConexion;
-import DAO.daoAlojamientos.Alojamientos;
 import DAO.daoAlojamientos.TipoAlojamiento;
 
 import java.io.IOException;
@@ -26,31 +25,39 @@ public class HotelesDAOImpl implements HotelesDAO {
         ResultSet resultSet = statement.executeQuery(sql);
         Hoteles hotel;
         while(resultSet.next()){
-            int ID_ALOJAMIENTO = resultSet.getInt("ID_ALOJAMIENTO");
-            String NOMBRE = resultSet.getString("NOMBRE");
-            String DIRECCION = resultSet.getString("DIRECCION");
-            TipoAlojamiento TIPO_ALOJAMIENTO = TipoAlojamiento.valueOf(resultSet.getString("TIPO_ALOJAMIENTO"));
-            int NUM_ESTRELLAS = resultSet.getInt("NUM_ESTRELLAS");
-            String TIPO_HABITACION = resultSet.getString("TIPO_HABITACION");
-           // hotel =new Hoteles(ID_ALOJAMIENTO,NOMBRE,DIRECCION,TIPO_ALOJAMIENTO,NUM_ESTRELLAS,TIPO_HABITACION);
-           // hoteles.add(hotel);
+            int id_alojamiento = resultSet.getInt("id_alojamiento");
+            String nombre = resultSet.getString("nombre");
+            String direccion = resultSet.getString("direccion");
+            TipoAlojamiento tipoAlojamiento = TipoAlojamiento.valueOf(resultSet.getString("tipoAlojamiento"));
+            int numeroEstrella = resultSet.getInt("numeroEstrella");
+            String tipoHabitacion = resultSet.getString("tipoHabitacion");
+            hotel =new Hoteles(id_alojamiento,nombre,direccion,tipoAlojamiento, numeroEstrella,tipoHabitacion);
+            hoteles.add(hotel);
         }
             return hoteles;
     }
 
     @Override
     public boolean annadirHotele(Hoteles hotel) throws SQLException {
-        String sql = "INSERT INTO HOTELES VALUES('"+ hotel.getNumeroEstrella() +"'," +
-                "'"+ hotel.getTipoHabitacion() +"','"+ hotel.getTipoAlojamiento() +"','"+ hotel.getDireccion() +"'," +
-                "'"+ hotel.getNombre() +"','"+ hotel.getId_alojamiento() +"';);";
+        String sql = "INSERT INTO HOTELES VALUES(?,?,?,?,?,?);";
         preparedStatement=conectar.prepareStatement(sql);
+        preparedStatement.setInt(1,hotel.getId_alojamiento());
+        preparedStatement.setString(2,hotel.getNombre());
+        preparedStatement.setString(3,hotel.getDireccion());
+        preparedStatement.setString(4, String.valueOf(hotel.getTipoAlojamiento()));
+        preparedStatement.setInt(5,hotel.getNumeroEstrella());
+        preparedStatement.setString(6,hotel.getTipoHabitacion());
         int resultado = preparedStatement.executeUpdate();
         return resultado != 0;
     }
 
     @Override
-    public boolean borrarHotelPorId(int id_hotel) throws SQLException {
-        return false;
+    public boolean borrarHotelPorId(int id_alojamiento) throws SQLException {
+        String sql = "DELETE FROM HOTELES WHERE ID_ALOJAMIENTO = ? ;";
+        preparedStatement = conectar.prepareStatement(sql);
+        preparedStatement.setString(1, String.valueOf(id_alojamiento));
+        int resultado = preparedStatement.executeUpdate();
+        return resultado != 0;
     }
 
     @Override

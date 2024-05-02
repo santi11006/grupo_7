@@ -6,7 +6,7 @@ import java.util.List;
 public interface HotelesDAO {
     List<Hoteles> mostrarHoteles() throws SQLException;
     boolean annadirHotele(Hoteles hotel) throws SQLException;
-    boolean borrarHotelPorId(int id_hotel) throws SQLException;
+    boolean borrarHotelPorId(int id_alojamiento) throws SQLException;
     boolean actualizarHotel();
 
 }

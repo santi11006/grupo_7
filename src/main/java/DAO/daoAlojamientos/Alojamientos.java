@@ -8,11 +8,11 @@ public class Alojamientos {
     private String direccion;
     private TipoAlojamiento tipoAlojamiento ;
 
-    public Alojamientos() {
-        this.id_alojamiento = id_alojamiento;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.tipoAlojamiento = tipoAlojamiento;
+    public Alojamientos(int id_alojamiento, String nombre, String direccion, TipoAlojamiento tipoAlojamiento) {
+        this.id_alojamiento = this.id_alojamiento;
+        this.nombre = this.nombre;
+        this.direccion = this.direccion;
+        this.tipoAlojamiento = this.tipoAlojamiento;
     }
 
     public int getId_alojamiento() {

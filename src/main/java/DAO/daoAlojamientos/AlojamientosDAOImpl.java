@@ -22,37 +22,44 @@ public class AlojamientosDAOImpl implements AlojamientosDAO {
         ResultSet resultSet = statement.executeQuery(sql);
         Alojamientos alojamiento = null;
         while(resultSet.next()){
-            int ID_ALOJAMIENTO = resultSet.getInt("ID_ALOJAMIENTO");
-            String NOMBRE = resultSet.getString("NOMBRE");
-            String DIRECCION = resultSet.getString("DIRECCION");
-            TipoAlojamiento TIPO_ALOJAMIENTO = TipoAlojamiento.valueOf(resultSet.getString("TIPO_ALOJAMIENTO"));
-            alojamiento =new Alojamientos();
+            int id_alojamiento = resultSet.getInt("id_alojamiento");
+            String nombre = resultSet.getString("nombre");
+            String direccion = resultSet.getString("direccion");
+            TipoAlojamiento tipoAlojamiento = TipoAlojamiento.valueOf(resultSet.getString("TIPO_ALOJAMIENTO"));
+            alojamiento =new Alojamientos(id_alojamiento,nombre,direccion,tipoAlojamiento);
             alojamientos.add(alojamiento);
         }
         return alojamientos;    }
 
     @Override
     public boolean annadirAlojamientos(Alojamientos alojamientos) throws SQLException {
-        String sql = " INSERT INTO ALOJAMIENTOS VALUES ('" + alojamientos.getId_alojamiento() + "', '"
-                + alojamientos.getNombre() + "'," + alojamientos.getDireccion() + "'" + alojamientos.getTipoAlojamiento() + "');";
+        String sql = " INSERT INTO ALOJAMIENTOS VALUES (?, ?, ?, ?);";
         preparedStatement = conectar.prepareStatement(sql);
+        preparedStatement.setInt(1, alojamientos.getId_alojamiento());
+        preparedStatement.setString(2, alojamientos.getNombre());
+        preparedStatement.setString(3, alojamientos.getNombre());
+        preparedStatement.setString(4, String.valueOf(alojamientos.getTipoAlojamiento()));
         int resultado = preparedStatement.executeUpdate();
         return resultado != 0;
     }
 
     @Override
     public boolean borraAlojamientosPorId(int id_alojamiento) throws SQLException {
-        String sql = "DELETE FROM ALOJAMIENTOS WHERE TELEFONO = '" + id_alojamiento + "';";
-        PreparedStatement prepareStatement = conectar.prepareStatement(sql);
-        prepareStatement.setString(1, String.valueOf(id_alojamiento));
-        int resultado = prepareStatement.executeUpdate();
+        String sql = "DELETE FROM ALOJAMIENTOS WHERE TELEFONO = ? ;";
+        preparedStatement = conectar.prepareStatement(sql);
+        preparedStatement.setString(1, String.valueOf(id_alojamiento));
+        int resultado = preparedStatement.executeUpdate();
         return resultado != 0;
     }
 
     @Override
     public boolean actualizarAlojamiento(int id_alojamiento, String nombre, String direccion, TipoAlojamiento tipoAlojamiento) throws SQLException {
-        String sql = "UPDATE ALOJAMIENTOS SET NOMBRE = '" + nombre + "', DIRECCION ='" + direccion+ "', TIPO_ALOJAMIENTO = '" + tipoAlojamiento + "' WHERE ID_ALOJAMIENTO = '" + id_alojamiento + "';";
-        PreparedStatement prepareStatement = conectar.prepareStatement(sql);
+        String sql = "UPDATE ALOJAMIENTOS SET NOMBRE = ?, DIRECCION =?, TIPO_ALOJAMIENTO = ? WHERE ID_ALOJAMIENTO = ?;";
+        preparedStatement = conectar.prepareStatement(sql);
+        preparedStatement.setInt(1,id_alojamiento);
+        preparedStatement.setString(2,nombre);
+        preparedStatement.setString(3, direccion);
+        preparedStatement.setString(4, String.valueOf(tipoAlojamiento));
         int actualizarDatos = preparedStatement.executeUpdate();
         return actualizarDatos > 0;
     }

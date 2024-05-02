@@ -24,12 +24,12 @@ public class UsuarioDAOImpl implements UsuariosDAO {
         ResultSet resultSet = statement.executeQuery(sql);
         Usuario usuario = null;
         while(resultSet.next()){
-            String EMAILl = resultSet.getString("EMAIL");
-            String TELEFONO = resultSet.getString("TELEFONO");
-            String NOMAPELL = resultSet.getString("NOMAPELL");
-            String DIRECCION = resultSet.getString("DIRECCION");
-            String CONTRASENNA = resultSet.getString("CONTRASENNA");
-            usuario =new Usuario(EMAILl,TELEFONO,NOMAPELL,DIRECCION,CONTRASENNA);
+            String email = resultSet.getString("email");
+            String telefono = resultSet.getString("telefono");
+            String nomapell = resultSet.getString("nomapell");
+            String direccion = resultSet.getString("direccion");
+            String contrasenna = resultSet.getString("contrasenna");
+            usuario =new Usuario(email,telefono,nomapell,direccion,contrasenna);
             usuarios.add(usuario);
         }
         return usuarios;
@@ -37,16 +37,20 @@ public class UsuarioDAOImpl implements UsuariosDAO {
 
     @Override
     public boolean annadirUsuario(Usuario usuario) throws SQLException {
-        String sql = " INSERT INTO USUARIOS VALUES ('" + usuario.getEmail() + "', '"
-                + usuario.getTelefono() + "'," + usuario.getNomapell() + "'" + usuario.getDireccion() + "''" + usuario.getContrasenna() + "' );";
+        String sql = " INSERT INTO USUARIOS VALUES (?, ?, ?, ?, ?);";
         preparedStatement = conectar.prepareStatement(sql);
+        preparedStatement.setString(1, usuario.getEmail());
+        preparedStatement.setString(2, usuario.getTelefono());
+        preparedStatement.setString(3, usuario.getNomapell());
+        preparedStatement.setString(4, usuario.getDireccion());
+        preparedStatement.setString(5, usuario.getContrasenna());
         int resultado = preparedStatement.executeUpdate();
         return resultado != 0;
     }
 
     @Override
     public boolean borrarPersonaPorTelefono(String telefono) throws SQLException {
-        String sql = "DELETE FROM USUARIOS WHERE TELEFONO = '" + telefono + "';";
+        String sql = "DELETE FROM USUARIOS WHERE TELEFONO = ?";
         PreparedStatement prepareStatement = conectar.prepareStatement(sql);
         prepareStatement.setString(1, telefono);
         int resultado = prepareStatement.executeUpdate();
@@ -55,8 +59,13 @@ public class UsuarioDAOImpl implements UsuariosDAO {
 
     @Override
     public boolean actualizarUsuario(String email, String telefono,String nomapell, String direccion, String contrasenna) throws SQLException {
-        String sql = "UPDATE USUARIOS SET EMAIL = '" + email + "', NOMAPELL ='" + nomapell+ "', DIRECCION = '" + direccion + "',CONTRASENNA = '" + contrasenna + "' WHERE TELEFONO = '" + telefono + "';";
-        PreparedStatement prepareStatement = conectar.prepareStatement(sql);
+        String sql = "UPDATE USUARIOS SET EMAIL = ?, NOMAPELL = ?, DIRECCION = ?, CONTRASENNA = ? WHERE TELEFONO = ? ;";
+        preparedStatement = conectar.prepareStatement(sql);
+        preparedStatement.setString(1,email);
+        preparedStatement.setString(2,telefono);
+        preparedStatement.setString(3,nomapell);
+        preparedStatement.setString(4, direccion);
+        preparedStatement.setString(5, contrasenna);
         int actualizarDatos = preparedStatement.executeUpdate();
         return actualizarDatos > 0;
     }
