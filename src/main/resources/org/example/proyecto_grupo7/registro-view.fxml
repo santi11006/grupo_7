@@ -3,8 +3,9 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.RegistroController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.RegistroController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
@@ -16,16 +17,97 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="TOP_RIGHT" depthTest="DISABLE" prefHeight="16.0" prefWidth="195.0" text="EMAIL: " textAlignment="JUSTIFY">
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Nombre y apellido:" GridPane.rowIndex="1">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <padding>
+                  <Insets left="50.0" right="10.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets left="60.0" right="10.0" />
+               </GridPane.margin></Label>
+            <TextField fx:id="cajaNomApe" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets left="30.0" right="30.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="124.0" text="Bienvenidos !!!">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="167.0" text="Telefono :" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="70.0" right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="cajaTelefono" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" right="30.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </TextField>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="166.0" text="Email :" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="70.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="cajaEmail" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="30.0" right="30.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </TextField>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="179.0" text="Direccion :" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="60.0" right="30.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="cajaDireccion" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="30.0" right="30.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </TextField>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="179.0" text="Contraseña :" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="60.0" right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <PasswordField fx:id="cajaContraseña" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="30.0" right="30.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </PasswordField>
+            <Button mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="310.0" text="Entrar" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="100.0" right="100.0" top="20.0" />
+               </GridPane.margin>
+               <padding>
                   <Insets left="10.0" right="10.0" />
                </padding>
-            </Label>
+            </Button>
          </children>
       </GridPane>
    </children>

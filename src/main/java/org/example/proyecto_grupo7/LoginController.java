@@ -19,13 +19,9 @@ public class LoginController {
     @FXML
     private TextField barraLogin, cajaPassword;
     @FXML
-    private Button botonEntrar;
+    private Button botonEntrar, noCuenta;
 
     @FXML
-    public void onClick(ActionEvent actionEvent){
-
-    }
-
     public void onClick(javafx.event.ActionEvent actionEvent) {
         String login = barraLogin.getText();
         String password = cajaPassword.getText();
