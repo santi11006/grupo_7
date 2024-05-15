@@ -15,6 +15,11 @@ public class RegistroController {
     @FXML
     private TextField cajaNomApe,cajaTelefono, cajaEmail, cajaDireccion, cajaContraseña;
 
+
+    public void botonSalir(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
     public void onClick(ActionEvent actionEvent) {
         String nombre = cajaNomApe.getText();
         String telefono = cajaTelefono.getText();

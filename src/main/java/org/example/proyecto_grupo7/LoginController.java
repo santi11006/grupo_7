@@ -1,14 +1,17 @@
 package org.example.proyecto_grupo7;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 public class LoginController {
     private Stage stage;
@@ -29,6 +32,16 @@ public class LoginController {
             System.out.println("Todo ha ido bien");
         }else {
             errorCuentaErronea.setText("Opsss... No tienes cuenta :( !!");
+            Alert alert = new Alert(Alert.AlertType.ERROR,"No existe ese usuario");
+            alert.showAndWait();
         }
+    }
+
+    public void noCuenta(ActionEvent actionEvent) throws IOException {
+        stage = (Stage) noCuenta.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("registro-view.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

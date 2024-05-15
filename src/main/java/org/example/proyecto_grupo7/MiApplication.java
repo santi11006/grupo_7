@@ -12,7 +12,7 @@ public class MiApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MiApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 300);
-        stage.setTitle("mi pagina de escritorio!");
+        stage.setTitle("Aplicacion!!!");
         stage.setScene(scene);
         stage.show();
     }
