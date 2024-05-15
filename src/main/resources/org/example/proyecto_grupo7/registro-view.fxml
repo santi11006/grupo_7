@@ -100,7 +100,7 @@
                   <Insets right="10.0" />
                </padding>
             </PasswordField>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#onClick" prefHeight="18.0" prefWidth="204.0" text="Entrar" GridPane.rowIndex="6">
+            <Button fx:id="onClick" alignment="CENTER" mnemonicParsing="false" onAction="#onClick" prefHeight="18.0" prefWidth="204.0" text="Entrar" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets bottom="20.0" left="180.0" top="20.0" />
                </GridPane.margin>

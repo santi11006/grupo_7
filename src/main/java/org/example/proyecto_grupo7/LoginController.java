@@ -25,10 +25,15 @@ public class LoginController {
     private Button botonEntrar, noCuenta;
 
     @FXML
-    public void onClick(javafx.event.ActionEvent actionEvent) {
+    public void onClick(javafx.event.ActionEvent actionEvent) throws IOException {
         String login = barraLogin.getText();
         String password = cajaPassword.getText();
         if (login.equals("santi") && password.equals("1234")) {
+            stage = (Stage) botonEntrar.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("alojamiento-view.fxml"));
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
             System.out.println("Todo ha ido bien");
         }else {
             errorCuentaErronea.setText("Opsss... No tienes cuenta :( !!");
