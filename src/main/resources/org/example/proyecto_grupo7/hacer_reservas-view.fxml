@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.HacerReservasController">
    <children>
-      <GridPane prefHeight="400.0" prefWidth="600.0">
+      <GridPane layoutY="12.0" prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,7 +32,7 @@
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Telefono:" GridPane.rowIndex="1" />
-            <TextField prefHeight="18.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="barraTelefono" onAction="#barraTelefono" prefHeight="18.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
@@ -41,7 +41,7 @@
                </padding>
             </TextField>
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Email:" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="barraEmail" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
@@ -49,7 +49,7 @@
                   <Insets right="10.0" />
                </padding>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="barraEntrada" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
@@ -57,7 +57,7 @@
                   <Insets right="10.0" />
                </padding>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="barraSalida" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
@@ -65,7 +65,7 @@
                   <Insets right="10.0" />
                </padding>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="barraIdAlojamiento" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
