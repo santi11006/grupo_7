@@ -18,7 +18,7 @@ public class AlojamientoController {
     private Scene scene;
     private Parent root;
     @FXML
-    private Button botonSalir,botonHotel;
+    private Button botonSalir,botonHotel,noCuenta;
 
     public void botonSalir(ActionEvent actionEvent) {
         System.exit(0);
@@ -38,5 +38,13 @@ public class AlojamientoController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-     }
+    }
+
+    public void noCuenta(ActionEvent actionEvent) throws IOException {
+        stage = (Stage) noCuenta.getScene().getWindow();
+        root =FXMLLoader.load(getClass().getResource("registro-view.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
