@@ -22,7 +22,7 @@ public class LoginController {
     @FXML
     private TextField barraLogin, cajaPassword;
     @FXML
-    private Button botonEntrar, noCuenta;
+    private Button botonEntrar;
 
     @FXML
     public void onClick(javafx.event.ActionEvent actionEvent) throws IOException {
@@ -40,13 +40,5 @@ public class LoginController {
             Alert alert = new Alert(Alert.AlertType.ERROR,"No existe ese usuario");
             alert.showAndWait();
         }
-    }
-
-    public void noCuenta(ActionEvent actionEvent) throws IOException {
-        stage = (Stage) noCuenta.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("registro-view.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 }

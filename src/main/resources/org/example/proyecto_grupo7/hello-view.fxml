@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.LoginController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.LoginController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="162.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="191.0" />
@@ -49,12 +49,11 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="botonEntrar" alignment="CENTER" mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="114.0" text="Entrar" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Button fx:id="botonEntrar" alignment="CENTER" mnemonicParsing="false" onAction="#onClick" prefHeight="26.0" prefWidth="114.0" text="Entrar" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="40.0" right="30.0" />
          </GridPane.margin>
       </Button>
       <Label fx:id="errorCuentaErronea" prefHeight="18.0" prefWidth="291.0" textFill="RED" GridPane.columnIndex="2" />
-      <Button fx:id="noCuenta" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#noCuenta" prefHeight="24.0" prefWidth="127.0" text="No tengo cuenta" GridPane.columnIndex="2" GridPane.rowIndex="3" />
    </children>
 </GridPane>
