@@ -22,6 +22,10 @@ public class Reserva{
         this.id_alojamiento = id_alojamiento;
     }
 
+    public Reserva() {
+
+    }
+
     public LocalDate getFecha_entrada() {
         return fecha_entrada;
     }

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.RegistroController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.RegistroController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
@@ -100,7 +100,7 @@
                   <Insets right="10.0" />
                </padding>
             </PasswordField>
-            <Button fx:id="onClick" alignment="CENTER" mnemonicParsing="false" onAction="#onClick" prefHeight="18.0" prefWidth="204.0" text="Entrar" GridPane.rowIndex="6">
+            <Button fx:id="onClick" alignment="CENTER" mnemonicParsing="false" onAction="#onClick" prefHeight="18.0" prefWidth="204.0" text="Registrar" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets bottom="20.0" left="180.0" top="20.0" />
                </GridPane.margin>
