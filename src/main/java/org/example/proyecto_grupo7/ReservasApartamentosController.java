@@ -15,10 +15,18 @@ public class ReservasApartamentosController {
     private Scene scene;
     private Parent root;
     @FXML
-    private Button volverAtrasApartamentos;
+    private Button volverAtrasApartamentos,hacerReserva;
     public void volverAtrasApartamentos(ActionEvent actionEvent) throws IOException {
         stage = (Stage) volverAtrasApartamentos.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("alojamiento-view.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void hacerReserva(ActionEvent actionEvent) throws IOException {
+        stage = (Stage) hacerReserva.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("hacer_reserva_apartamentos.fxml"));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

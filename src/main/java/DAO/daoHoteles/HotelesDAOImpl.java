@@ -61,7 +61,16 @@ public class HotelesDAOImpl implements HotelesDAO {
     }
 
     @Override
-    public boolean actualizarHotel() {
-        return false;
+    public boolean actualizarHotel(Hoteles hoteles) throws SQLException {
+        String sql = "UPDATE HOTELES SET nombre = ?, direccion = ?, tipoAlojamiento = ?, numeroEstrella = ?, tipoHabitacion = ? WHERE id_alojamiento = ?;";
+        preparedStatement = conectar.prepareStatement(sql);
+        preparedStatement.setString(1, hoteles.getNombre());
+        preparedStatement.setString(2, hoteles.getDireccion());
+        preparedStatement.setString(3, String.valueOf(hoteles.getTipoAlojamiento()));
+        preparedStatement.setInt(4, hoteles.getNumeroEstrella());
+        preparedStatement.setString(5, hoteles.getTipoHabitacion());
+        preparedStatement.setInt(6, hoteles.getId_alojamiento());
+        int resultado = preparedStatement.executeUpdate();
+        return resultado != 0;
     }
 }

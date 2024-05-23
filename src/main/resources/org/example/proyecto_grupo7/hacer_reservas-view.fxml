@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.HacerReservasController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.HacerReservasController">
    <children>
       <GridPane layoutY="12.0" prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
@@ -32,7 +32,7 @@
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Telefono:" GridPane.rowIndex="1" />
-            <TextField fx:id="barraTelefono" onAction="#barraTelefono" prefHeight="18.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="barraTelefono" prefHeight="18.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>

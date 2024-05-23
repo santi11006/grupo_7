@@ -1,12 +1,12 @@
 package DAO.daoApartamentos;
 
 import DAO.EstablecerConexion;
+import DAO.daoAlojamientos.TipoAlojamiento;
+import DAO.daoHoteles.Hoteles;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ApartamentosDAOImpl implements ApartamentosDAO {

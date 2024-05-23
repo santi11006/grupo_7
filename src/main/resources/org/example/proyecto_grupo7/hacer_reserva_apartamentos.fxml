@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.HacerReservaApartamentosController">
+    <children>
+        <GridPane layoutY="12.0" prefHeight="400.0" prefWidth="600.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="212.0" text="Hacer Reseva" GridPane.columnIndex="1">
+                    <GridPane.margin>
+                        <Insets right="20.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="19.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Telefono:" GridPane.rowIndex="1" />
+                <TextField fx:id="barraTelefono" prefHeight="18.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </GridPane.margin>
+                    <padding>
+                        <Insets right="10.0" />
+                    </padding>
+                </TextField>
+                <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Email:" GridPane.rowIndex="2" />
+                <TextField fx:id="barraEmail" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </GridPane.margin>
+                    <padding>
+                        <Insets right="10.0" />
+                    </padding>
+                </TextField>
+                <TextField fx:id="barraEntrada" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </GridPane.margin>
+                    <padding>
+                        <Insets right="10.0" />
+                    </padding>
+                </TextField>
+                <TextField fx:id="barraSalida" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </GridPane.margin>
+                    <padding>
+                        <Insets right="10.0" />
+                    </padding>
+                </TextField>
+                <TextField fx:id="barraIdAlojamiento" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </GridPane.margin>
+                    <padding>
+                        <Insets right="10.0" />
+                    </padding>
+                </TextField>
+                <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Fecha entrada:" GridPane.rowIndex="3" />
+                <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="181.0" text="Fecha salida:" GridPane.rowIndex="4" />
+                <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Codigo alojamiento:" GridPane.rowIndex="5" />
+                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="201.0" text="reserva" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <GridPane.margin>
+                        <Insets left="40.0" right="40.0" />
+                    </GridPane.margin>
+                </Button>
+                <Button fx:id="volverAtras" mnemonicParsing="false" onAction="#volverAtras" prefHeight="26.0" prefWidth="200.0" text="Volver atras" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                    <GridPane.margin>
+                        <Insets left="40.0" right="40.0" />
+                    </GridPane.margin>
+                </Button>
+            </children>
+        </GridPane>
+    </children>
+</AnchorPane>
