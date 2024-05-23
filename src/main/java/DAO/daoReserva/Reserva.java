@@ -26,6 +26,9 @@ public class Reserva{
 
     }
 
+    public Reserva(String telefono, String email, LocalDate fechaEntrada, LocalDate fechaSalida, int idAlojamiento) {
+    }
+
     public LocalDate getFecha_entrada() {
         return fecha_entrada;
     }

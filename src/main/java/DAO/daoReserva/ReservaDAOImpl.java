@@ -16,6 +16,7 @@ public class ReservaDAOImpl implements ReservaDAO{
     public ReservaDAOImpl() throws SQLException, IOException {
         connection = EstablecerConexion.getEstablecerConexion().getConexion();
     }
+
     @Override
     public List<Reserva> getVerReservas() throws SQLException {
         List<Reserva> reservas = new ArrayList<>();
