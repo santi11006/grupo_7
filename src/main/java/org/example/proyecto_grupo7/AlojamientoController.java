@@ -18,7 +18,7 @@ public class AlojamientoController {
     private Scene scene;
     private Parent root;
     @FXML
-    private Button botonSalir,botonHotel,noCuenta;
+    private Button botonSalir,botonHotel,noCuenta,botonVerClientes;
 
     public void botonSalir(ActionEvent actionEvent) {
         System.exit(0);
@@ -47,4 +47,5 @@ public class AlojamientoController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

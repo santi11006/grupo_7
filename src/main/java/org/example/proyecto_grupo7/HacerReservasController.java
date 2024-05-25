@@ -42,41 +42,59 @@ public class HacerReservasController {
     }
 
     public void hacerReserva(ActionEvent actionEvent) throws SQLException, IOException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+
+        String telefono = barraTelefonoNew.getText();
+        String email = barraEmailNew.getText();
+        LocalDate fechaEntrada;
+        LocalDate fechaSalida;
+        int idAlojamiento;
 
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
-
-            String telefono = barraTelefonoNew.getText();
-            String email = barraEmailNew.getText();
-            LocalDate fechaEntrada = LocalDate.parse(barraEntradaNew.getText(), formatter);
-            LocalDate fechaSalida = LocalDate.parse(barraSalidaNew.getText(), formatter);
-            int idAlojamiento = Integer.parseInt(barraIdAlojamientoNew.getText());
-
-            Reserva reserva = new Reserva();
-            reserva.setTelefono(telefono);
-            reserva.setEmail(email);
-            reserva.setFecha_entrada(fechaEntrada);
-            reserva.setFecha_salida(fechaSalida);
-            reserva.setId_alojamiento(idAlojamiento);
-
-            if (reservaDAO.hacerReserva(reserva)) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Reserva realizada con éxito");
-                alert.showAndWait();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No se ha podido hacer la reserva");
-                alert.showAndWait();  // Show the alert in case of failure
-            }
+            fechaEntrada = LocalDate.parse(barraEntradaNew.getText(), formatter);
         } catch (DateTimeParseException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Formato de fecha incorrecto. Por favor, use el formato dd/MM/yy.");
-            alert.showAndWait();
-        } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Error al hacer la reserva: " );
-            alert.showAndWait();
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Formato de número incorrecto. Por favor, verifique sus entradas.");
-            alert.showAndWait();
+            System.out.println("Formato de fecha de entrada incorrecto. Utilice el formato dd/MM/yy.");
+            return;
         }
 
+        try {
+            fechaSalida = LocalDate.parse(barraSalidaNew.getText(), formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("Formato de fecha de salida incorrecto. Utilice el formato dd/MM/yy.");
+            return;
+        }
 
+        if (fechaSalida.isBefore(fechaEntrada)) {
+            System.out.println("La fecha de salida debe ser posterior a la fecha de entrada.");
+            return;
+        }
+
+        try {
+            idAlojamiento = Integer.parseInt(barraIdAlojamientoNew.getText());
+        } catch (NumberFormatException e) {
+            System.out.println("ID de alojamiento inválido. Debe ser un número.");
+            return;
+        }
+
+        Reserva reserva = new Reserva();
+        reserva.setTelefono(telefono);
+        reserva.setEmail(email);
+        reserva.setFecha_entrada(fechaEntrada);
+        reserva.setFecha_salida(fechaSalida);
+        reserva.setId_alojamiento(idAlojamiento);
+
+        try {
+            boolean exito = reservaDAO.hacerReserva(reserva);
+            if (exito) {
+                System.out.println("Reserva realizada con éxito.");
+            } else {
+                System.out.println("No se pudo realizar la reserva.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error al realizar la reserva. Por favor, inténtelo de nuevo.");
+        }
     }
+
+
 }

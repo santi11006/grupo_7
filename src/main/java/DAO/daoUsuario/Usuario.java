@@ -17,6 +17,10 @@ public class Usuario {
         this.contrasenna = contrasenna;
     }
 
+    public Usuario() {
+
+    }
+
     public String getEmail() {
         return email;
     }
