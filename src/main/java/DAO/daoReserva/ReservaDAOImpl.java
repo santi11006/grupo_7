@@ -24,13 +24,14 @@ public class ReservaDAOImpl implements ReservaDAO{
         statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
+
         while (resultSet.next()) {
-            Reserva reserva = new Reserva();
-            reserva.setFecha_entrada(resultSet.getDate("fecha_entrada").toLocalDate());
-            reserva.setId_alojamiento(resultSet.getInt("id_alojamiento"));
-            reserva.setTelefono(resultSet.getString("telefono"));
-            reserva.setFecha_salida(resultSet.getDate("fecha_salida").toLocalDate());
-            reserva.setEmail(resultSet.getString("email"));
+            LocalDate fechaEntrada = resultSet.getDate("fecha_entrada").toLocalDate();
+            LocalDate fechaSalida = resultSet.getDate("fecha_salida").toLocalDate();
+            String email = resultSet.getString("email");
+            String telefono = resultSet.getString("telefono");
+            int id = resultSet.getInt("id_alojamiento");
+            Reserva reserva = new Reserva(fechaEntrada,fechaSalida,email,telefono,id);
             reservas.add(reserva);
         }
         return reservas;
@@ -62,13 +63,13 @@ public class ReservaDAOImpl implements ReservaDAO{
 
     @Override
     public boolean hacerReserva(Reserva reserva) throws SQLException {
-        String sql = "INSERT INTO reservas (fecha_entrada, id_alojamiento, telefono, fecha_salida, email) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO reserva (fecha_entrada, fecha_salida, email, telefono, id_alojamiento) VALUES (?, ?, ?, ?, ?)";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setDate(1, Date.valueOf(reserva.getFecha_entrada()));
-        preparedStatement.setInt(2, reserva.getId_alojamiento());
-        preparedStatement.setString(3, reserva.getTelefono());
-        preparedStatement.setDate(4, Date.valueOf(reserva.getFecha_salida()));
-        preparedStatement.setString(5, reserva.getEmail());
+        preparedStatement.setDate(2, Date.valueOf(reserva.getFecha_salida()));
+        preparedStatement.setString(3, reserva.getEmail());
+        preparedStatement.setString(4, reserva.getTelefono());
+        preparedStatement.setInt(5, reserva.getId_alojamiento());
         int resultado = preparedStatement.executeUpdate();
         return resultado > 0;
     }

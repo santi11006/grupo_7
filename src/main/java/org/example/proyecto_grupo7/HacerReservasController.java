@@ -42,59 +42,27 @@ public class HacerReservasController {
     }
 
     public void hacerReserva(ActionEvent actionEvent) throws SQLException, IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
 
         String telefono = barraTelefonoNew.getText();
         String email = barraEmailNew.getText();
-        LocalDate fechaEntrada;
-        LocalDate fechaSalida;
-        int idAlojamiento;
+        String fecha_entrada = barraEntradaNew.getText();
+        String fecha_salida = barraSalidaNew.getText();
+        int id_alojamiento = Integer.parseInt(barraIdAlojamientoNew.getText());
 
-        try {
-            fechaEntrada = LocalDate.parse(barraEntradaNew.getText(), formatter);
-        } catch (DateTimeParseException e) {
-            System.out.println("Formato de fecha de entrada incorrecto. Utilice el formato dd/MM/yy.");
-            return;
-        }
+        String[] fechaEntrada = fecha_entrada.split("-");
+        int anioEntrada = Integer.parseInt(fechaEntrada[0]);
+        int mesEntrada = Integer.parseInt(fechaEntrada[1]);
+        int diaEntrada = Integer.parseInt(fechaEntrada[2]);
+        LocalDate salidaFecha = LocalDate.of(anioEntrada, mesEntrada, diaEntrada);
 
-        try {
-            fechaSalida = LocalDate.parse(barraSalidaNew.getText(), formatter);
-        } catch (DateTimeParseException e) {
-            System.out.println("Formato de fecha de salida incorrecto. Utilice el formato dd/MM/yy.");
-            return;
-        }
+        String[] fechaSalida = fecha_salida.split("-");
+        int anioSalida = Integer.parseInt(fechaSalida[0]);
+        int mesSalida = Integer.parseInt(fechaSalida[1]);
+        int diaSalida = Integer.parseInt(fechaSalida[2]);
+        LocalDate entradaFecha = LocalDate.of(anioSalida, mesSalida, diaSalida);
 
-        if (fechaSalida.isBefore(fechaEntrada)) {
-            System.out.println("La fecha de salida debe ser posterior a la fecha de entrada.");
-            return;
-        }
+        Reserva reserva = new Reserva(entradaFecha,salidaFecha,email,telefono,id_alojamiento);
 
-        try {
-            idAlojamiento = Integer.parseInt(barraIdAlojamientoNew.getText());
-        } catch (NumberFormatException e) {
-            System.out.println("ID de alojamiento inválido. Debe ser un número.");
-            return;
-        }
-
-        Reserva reserva = new Reserva();
-        reserva.setTelefono(telefono);
-        reserva.setEmail(email);
-        reserva.setFecha_entrada(fechaEntrada);
-        reserva.setFecha_salida(fechaSalida);
-        reserva.setId_alojamiento(idAlojamiento);
-
-        try {
-            boolean exito = reservaDAO.hacerReserva(reserva);
-            if (exito) {
-                System.out.println("Reserva realizada con éxito.");
-            } else {
-                System.out.println("No se pudo realizar la reserva.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Error al realizar la reserva. Por favor, inténtelo de nuevo.");
-        }
+        reservaDAO.hacerReserva(reserva);
     }
-
-
 }
