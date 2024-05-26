@@ -18,7 +18,7 @@ public class ReservasHotelesController {
     private Scene scene;
     private Parent root;
     @FXML
-    private Button volverAtras, hacerReserva;
+    private Button volverAtras, hacerReserva, botonEliminar;
 
     public void volverAtras(ActionEvent actionEvent) throws IOException {
         stage = (Stage) volverAtras.getScene().getWindow();
@@ -34,5 +34,8 @@ public class ReservasHotelesController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void eliminarReserva(ActionEvent actionEvent) {
     }
 }

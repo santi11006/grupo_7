@@ -29,7 +29,7 @@
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="228.0" text="Eliminar reserva" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="botonEliminar" alignment="CENTER" mnemonicParsing="false" onAction="#eliminarReserva" prefHeight="26.0" prefWidth="228.0" text="Eliminar reserva" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin>

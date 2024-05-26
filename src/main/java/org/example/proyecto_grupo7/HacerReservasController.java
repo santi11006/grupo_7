@@ -12,6 +12,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -43,26 +45,45 @@ public class HacerReservasController {
 
     public void hacerReserva(ActionEvent actionEvent) throws SQLException, IOException {
 
+
         String telefono = barraTelefonoNew.getText();
         String email = barraEmailNew.getText();
         String fecha_entrada = barraEntradaNew.getText();
         String fecha_salida = barraSalidaNew.getText();
         int id_alojamiento = Integer.parseInt(barraIdAlojamientoNew.getText());
 
-        String[] fechaEntrada = fecha_entrada.split("-");
-        int anioEntrada = Integer.parseInt(fechaEntrada[0]);
-        int mesEntrada = Integer.parseInt(fechaEntrada[1]);
-        int diaEntrada = Integer.parseInt(fechaEntrada[2]);
-        LocalDate salidaFecha = LocalDate.of(anioEntrada, mesEntrada, diaEntrada);
+        if (telefono.length() != 9) {
+            Alert alertaTelefono = new Alert(Alert.AlertType.WARNING);
+            alertaTelefono.setTitle("Alerta");
+            alertaTelefono.setHeaderText(null);
+            alertaTelefono.setContentText("Falta ingresar números en el teléfono.");
+            alertaTelefono.showAndWait();
+            return; // Detener la ejecución del método si no cumple con la validación
+        }
 
-        String[] fechaSalida = fecha_salida.split("-");
-        int anioSalida = Integer.parseInt(fechaSalida[0]);
-        int mesSalida = Integer.parseInt(fechaSalida[1]);
-        int diaSalida = Integer.parseInt(fechaSalida[2]);
-        LocalDate entradaFecha = LocalDate.of(anioSalida, mesSalida, diaSalida);
+        if (!email.contains("@")) {
+            Alert alertaEmail = new Alert(Alert.AlertType.WARNING);
+            alertaEmail.setTitle("Alerta");
+            alertaEmail.setHeaderText(null);
+            alertaEmail.setContentText("Falta el símbolo '@' en el correo electrónico.");
+            alertaEmail.showAndWait();
+            return;
+        }
 
-        Reserva reserva = new Reserva(entradaFecha,salidaFecha,email,telefono,id_alojamiento);
+        LocalDate fechaEntrada = LocalDate.parse(fecha_entrada);
+        LocalDate fechaSalida = LocalDate.parse(fecha_salida);
 
+        if (fechaEntrada.isAfter(fechaSalida)) {
+            Alert alertaFechas = new Alert(Alert.AlertType.WARNING);
+            alertaFechas.setTitle("Alerta");
+            alertaFechas.setHeaderText(null);
+            alertaFechas.setContentText("La fecha de entrada debe ser anterior a la fecha de salida.");
+            alertaFechas.showAndWait();
+            return;
+        }
+
+        Reserva reserva = new Reserva(fechaEntrada, fechaSalida, email, telefono, id_alojamiento);
         reservaDAO.hacerReserva(reserva);
+
     }
 }

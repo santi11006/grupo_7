@@ -8,15 +8,31 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author santi
+ * @version 1.0
+ * @since 26/05/2024
+ */
 public class ReservaDAOImpl implements ReservaDAO{
     private Statement statement;
     private PreparedStatement preparedStatement;
     private final Connection connection;
 
+    /**
+     * Es el contrucutor el cual va a hacer que se conecte las reservas con la base de datos
+     * @throws SQLException atrapa las excepciones del getEstablecerConexion
+     * @throws IOException atrapa las excepciones del getEstablecerConexion
+     *
+     */
     public ReservaDAOImpl() throws SQLException, IOException {
         connection = EstablecerConexion.getEstablecerConexion().getConexion();
     }
 
+    /**
+     * Devuelve un listado de reservas y nos muestra toda a informacion de reservas
+     * @return
+     * @throws SQLException
+     */
     @Override
     public List<Reserva> getVerReservas() throws SQLException {
         List<Reserva> reservas = new ArrayList<>();
@@ -39,7 +55,7 @@ public class ReservaDAOImpl implements ReservaDAO{
 
     @Override
     public boolean borrarReservasPorIdAlojamientoTelefonoFechaEntrada(LocalDate fecha_entrada, int id_alojamiento, String telefono) throws SQLException {
-        String sql = "DELETE FROM reservas WHERE fecha_entrada = ? AND id_alojamiento = ? AND telefono = ?";
+        String sql = "DELETE FROM reserva WHERE fecha_entrada = ? AND id_alojamiento = ? AND telefono = ?";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setDate(1, Date.valueOf(fecha_entrada));
         preparedStatement.setInt(2, id_alojamiento);
