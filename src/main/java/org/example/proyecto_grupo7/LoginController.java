@@ -13,6 +13,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Controlador para la vista de inicio de sesión.
+ * @author santi
+ * @version 1.0
+ * @since 27/05/2024
+ */
 public class LoginController {
     private Stage stage;
     private Scene scene;
@@ -24,6 +30,11 @@ public class LoginController {
     @FXML
     private Button botonEntrar;
 
+    /**
+     * Método para manejar el evento de clic en el botón de inicio de sesión.
+     * @param actionEvent El evento de acción generado por el clic en el botón de inicio de sesión.
+     * @throws IOException Si ocurre un error al cargar la vista de alojamiento o mostrar una alerta.
+     */
     @FXML
     public void onClick(javafx.event.ActionEvent actionEvent) throws IOException {
         String login = barraLogin.getText();
@@ -35,9 +46,9 @@ public class LoginController {
             stage.setScene(scene);
             stage.show();
             System.out.println("Todo ha ido bien");
-        }else {
+        } else {
             errorCuentaErronea.setText("Opsss... No tienes cuenta :( !!");
-            Alert alert = new Alert(Alert.AlertType.ERROR,"No existe ese usuario");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "No existe ese usuario");
             alert.showAndWait();
         }
     }

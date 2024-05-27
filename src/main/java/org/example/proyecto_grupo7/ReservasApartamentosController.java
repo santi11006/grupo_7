@@ -10,12 +10,22 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Controlador para la vista de gestión de reservas de apartamentos.
+ */
 public class ReservasApartamentosController {
     private Stage stage;
     private Scene scene;
     private Parent root;
     @FXML
-    private Button volverAtrasApartamentos,hacerReserva;
+    private Button volverAtrasApartamentos, hacerReserva;
+
+    /**
+     * Método para manejar el evento del botón de retroceso.
+     *
+     * @param actionEvent El evento de acción generado por el clic en el botón de retroceso.
+     * @throws IOException Si ocurre un error al cargar la vista de alojamiento.
+     */
     public void volverAtrasApartamentos(ActionEvent actionEvent) throws IOException {
         stage = (Stage) volverAtrasApartamentos.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("alojamiento-view.fxml"));
@@ -24,6 +34,12 @@ public class ReservasApartamentosController {
         stage.show();
     }
 
+    /**
+     * Método para manejar el evento del botón de hacer reserva.
+     *
+     * @param actionEvent El evento de acción generado por el clic en el botón de hacer reserva.
+     * @throws IOException Si ocurre un error al cargar la vista de hacer reserva de apartamentos.
+     */
     public void hacerReserva(ActionEvent actionEvent) throws IOException {
         stage = (Stage) hacerReserva.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("hacer_reserva_apartamentos.fxml"));
@@ -32,3 +48,4 @@ public class ReservasApartamentosController {
         stage.show();
     }
 }
+

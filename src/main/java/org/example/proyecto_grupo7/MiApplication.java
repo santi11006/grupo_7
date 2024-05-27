@@ -7,7 +7,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Clase principal de la aplicación.
+ * @author santi
+ * @version 1.0
+ * @since 27/05/2024
+ */
 public class MiApplication extends Application {
+    /**
+     * Método principal de la aplicación que inicia la interfaz gráfica.
+     * @param stage El escenario principal de la aplicación.
+     * @throws IOException Si ocurre un error al cargar la vista.
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MiApplication.class.getResource("hello-view.fxml"));
@@ -17,6 +28,10 @@ public class MiApplication extends Application {
         stage.show();
     }
 
+    /**
+     * Método principal que inicia la aplicación.
+     * @param args Los argumentos de la línea de comandos.
+     */
     public static void main(String[] args) {
         launch();
     }
