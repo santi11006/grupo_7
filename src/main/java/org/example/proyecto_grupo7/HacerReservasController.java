@@ -89,7 +89,7 @@ public class HacerReservasController {
         LocalDate fechaEntrada = LocalDate.parse(fecha_entrada);
         LocalDate fechaSalida = LocalDate.parse(fecha_salida);
 
-        if (fechaEntrada.isAfter(fechaSalida)) {
+        if (fechaEntrada.isBefore(fechaSalida)) {
             Alert alertaFechas = new Alert(Alert.AlertType.WARNING);
             alertaFechas.setTitle("Alerta");
             alertaFechas.setHeaderText(null);
@@ -100,13 +100,5 @@ public class HacerReservasController {
 
         Reserva reserva = new Reserva(fechaEntrada, fechaSalida, email, telefono, id_alojamiento);
         reservaDAO.hacerReserva(reserva);
-
-        Alert alertaConfirmacion = new Alert(Alert.AlertType.INFORMATION);
-        alertaConfirmacion.setTitle("Reserva Realizada");
-        alertaConfirmacion.setHeaderText(null);
-        alertaConfirmacion.setContentText("La reserva se ha realizado correctamente.\n" +
-                "Teléfono: " + telefono + "\n" +
-                "Correo electrónico: " + email);
-        alertaConfirmacion.showAndWait();
     }
 }
