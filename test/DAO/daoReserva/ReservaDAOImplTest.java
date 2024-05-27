@@ -24,6 +24,7 @@ class ReservaDAOImplTest {
         LocalDate fecha_entrada = LocalDate.of(2024,02,14);
         LocalDate fecha_salida = LocalDate.of(2024,02,17);
         reserva = new Reserva(fecha_entrada,fecha_salida,"santi@gm.com","123456789",3);
+        System.out.println("reserva creada");
     }
 
     @After
