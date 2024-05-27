@@ -10,7 +10,6 @@ import java.util.Objects;
  * @version 1.0
  * @since 27/05/2024
  */
-
 public class Apartamentos extends Alojamientos {
     private int id_apartamentos;
     private int distancia;

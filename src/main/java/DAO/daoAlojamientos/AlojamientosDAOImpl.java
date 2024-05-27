@@ -52,7 +52,6 @@ public class AlojamientosDAOImpl implements AlojamientosDAO {
      * @return true si el alojamiento fue añadido con éxito, false en caso contrario
      * @throws SQLException si ocurre un error al acceder a la base de datos
      */
-
     @Override
     public boolean annadirAlojamientos(Alojamientos alojamientos) throws SQLException {
         String sql = " INSERT INTO ALOJAMIENTOS VALUES (?, ?, ?, ?);";

@@ -8,7 +8,6 @@ import java.util.List;
  * @version 1.0
  * @since 27/05/2024
  */
-
 public interface AlojamientosDAO {
     //hacer metodos crud
     /**
