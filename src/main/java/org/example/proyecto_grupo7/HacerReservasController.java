@@ -86,19 +86,10 @@ public class HacerReservasController {
             return;
         }
 
-        String[] fechaEntrada = fecha_entrada.split("/");
-        int añoEtrada1 = Integer.parseInt(fechaEntrada[0]);
-        int mesEtrada2 = Integer.parseInt(fechaEntrada[1]);
-        int diaEtrada3 = Integer.parseInt(fechaEntrada[2]);
-        LocalDate entradaFecha = LocalDate.of(añoEtrada1,mesEtrada2,diaEtrada3);
+        LocalDate fechaEntrada = LocalDate.parse(fecha_entrada);
+        LocalDate fechaSalida = LocalDate.parse(fecha_salida);
 
-        String[] fechaSalida = fecha_entrada.split("/");
-        int añoSalida = Integer.parseInt(fechaEntrada[0]);
-        int mesSalida = Integer.parseInt(fechaEntrada[1]);
-        int diaSalida = Integer.parseInt(fechaEntrada[2]);
-        LocalDate salidaFecha = LocalDate.of(añoEtrada1,mesSalida,diaSalida);
-
-        if (entradaFecha.isAfter(salidaFecha)) {
+        if (fechaEntrada.isAfter(fechaSalida)) {
             Alert alertaFechas = new Alert(Alert.AlertType.WARNING);
             alertaFechas.setTitle("Alerta");
             alertaFechas.setHeaderText(null);
@@ -107,7 +98,7 @@ public class HacerReservasController {
             return;
         }
 
-        Reserva reserva = new Reserva(entradaFecha, salidaFecha, email, telefono, id_alojamiento);
+        Reserva reserva = new Reserva(fechaEntrada, fechaSalida, email, telefono, id_alojamiento);
         reservaDAO.hacerReserva(reserva);
 
         Alert alertaConfirmacion = new Alert(Alert.AlertType.INFORMATION);
