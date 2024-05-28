@@ -86,8 +86,18 @@ public class HacerReservasController {
             return;
         }
 
-        LocalDate fechaEntrada = LocalDate.parse(fecha_entrada);
-        LocalDate fechaSalida = LocalDate.parse(fecha_salida);
+        String[] token = fecha_entrada.split("/");
+        int tokenAño = Integer.parseInt(token[0]);
+        int tokenMes = Integer.parseInt(token[1]);
+        int tokenDia = Integer.parseInt(token[2]);
+        LocalDate fechaEntrada = LocalDate.of(tokenAño,tokenMes,tokenDia);
+
+        String[] salida = fecha_entrada.split("/");
+        int salidaAño = Integer.parseInt(salida[0]);
+        int salidaMes = Integer.parseInt(salida[1]);
+        int salidaDia = Integer.parseInt(salida[2]);
+        LocalDate fechaSalida = LocalDate.of(salidaAño,salidaMes,salidaDia);
+
 
         if (fechaEntrada.isAfter(fechaSalida)) {
             Alert alertaFechas = new Alert(Alert.AlertType.WARNING);
