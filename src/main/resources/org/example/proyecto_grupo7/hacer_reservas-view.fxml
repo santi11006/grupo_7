@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,20 +10,20 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_grupo7.HacerReservasController">
    <children>
       <GridPane layoutY="12.0" prefHeight="400.0" prefWidth="600.0">
-        <columnConstraints>
+         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="212.0" text="Hacer Reseva" GridPane.columnIndex="1">
                <GridPane.margin>
@@ -49,30 +51,38 @@
                   <Insets right="10.0" />
                </padding>
             </TextField>
-            <TextField fx:id="barraEntradaNew" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <DatePicker fx:id="barraEntradaNew" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
                <padding>
                   <Insets right="10.0" />
                </padding>
-            </TextField>
-            <TextField fx:id="barraSalidaNew" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            </DatePicker>
+            <DatePicker fx:id="barraSalidaNew" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
                <padding>
                   <Insets right="10.0" />
                </padding>
-            </TextField>
-            <TextField fx:id="barraIdAlojamientoNew" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            </DatePicker>
+            <!-- ComboBox para IDs de alojamientos -->
+            <ComboBox fx:id="comboBoxAlojamiento" prefHeight="26.0" prefWidth="181.0" promptText="di tu opcion" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
                <padding>
                   <Insets right="10.0" />
                </padding>
-            </TextField>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="1" />
+                     <String fx:value="3" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Fecha entrada:" GridPane.rowIndex="3" />
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="181.0" text="Fecha salida:" GridPane.rowIndex="4" />
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="185.0" text="Codigo alojamiento:" GridPane.rowIndex="5" />

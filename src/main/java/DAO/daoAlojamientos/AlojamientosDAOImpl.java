@@ -71,7 +71,7 @@ public class AlojamientosDAOImpl implements AlojamientosDAO {
      */
     @Override
     public boolean borraAlojamientosPorId(int id_alojamiento) throws SQLException {
-        String sql = "DELETE FROM ALOJAMIENTOS WHERE TELEFONO = ? ;";
+        String sql = "DELETE FROM ALOJAMIENTOS WHERE id_alojamiento = ? ;";
         preparedStatement = conectar.prepareStatement(sql);
         preparedStatement.setString(1, String.valueOf(id_alojamiento));
         int resultado = preparedStatement.executeUpdate();
