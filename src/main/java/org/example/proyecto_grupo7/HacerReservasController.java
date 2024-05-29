@@ -1,6 +1,8 @@
 package org.example.proyecto_grupo7;
 
 import DAO.daoReserva.*;
+import DAO.daoUsuario.UsuarioDAOImpl;
+import DAO.daoUsuario.UsuariosDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +45,7 @@ import java.time.LocalDate;
  */
 public class HacerReservasController {
     private ReservaDAOImpl reservaDAO = new ReservaDAOImpl();
+    private UsuariosDAO usuariosDAO = new UsuarioDAOImpl();
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -93,16 +96,20 @@ public class HacerReservasController {
         String email = barraEmailNew.getText();
         LocalDate fechaEntrada = barraEntradaNew.getValue();
         LocalDate fechaSalida = barraSalidaNew.getValue();
+        int idAlojamiento = Integer.parseInt(comboBoxAlojamiento.getValue());
 
-        // Obtener el ID del alojamiento seleccionado en el ComboBox
-        String selectedItem = comboBoxAlojamiento.getSelectionModel().getSelectedItem();
-        int idAlojamiento = obtenerIdAlojamiento(selectedItem);
+        if(!usuariosDAO.existeTelefonoUsuario(telefono)) {
+            mostrarAlerta("Alerta", null, "Telefono no registrado");
+            return;
+        }
 
         // Validaciones
         if (telefono.length() != 9) {
             mostrarAlerta("Alerta", null, "Falta ingresar números en el teléfono.");
             return;
         }
+
+
 
         if (!email.contains("@")) {
             mostrarAlerta("Alerta", null, "Falta el símbolo '@' en el correo electrónico.");
@@ -127,6 +134,7 @@ public class HacerReservasController {
                 "Teléfono: " + telefono + "\n" +
                 "Correo electrónico: " + email);
     }
+
 
     /**
      * Método para obtener el ID del alojamiento seleccionado.

@@ -20,6 +20,7 @@ public class UsuarioDAOImpl implements UsuariosDAO {
 
     /**
      * Constructor de UsuarioDAOImpl que establece una conexión a la base de datos.
+     *
      * @throws SQLException Si ocurre un error al establecer la conexión a la base de datos.
      * @throws IOException  Si ocurre un error de E/S.
      */
@@ -29,6 +30,7 @@ public class UsuarioDAOImpl implements UsuariosDAO {
 
     /**
      * Recupera una lista de todos los usuarios en la base de datos.
+     *
      * @return Una lista de objetos Usuario que representan a los usuarios en la base de datos.
      * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
      */
@@ -53,6 +55,7 @@ public class UsuarioDAOImpl implements UsuariosDAO {
 
     /**
      * Añade un nuevo usuario a la base de datos.
+     *
      * @param usuario El objeto Usuario que se va a añadir a la base de datos.
      * @return true si se añade correctamente, false si no.
      * @throws SQLException Si ocurre un error al ejecutar la inserción en la base de datos.
@@ -72,6 +75,7 @@ public class UsuarioDAOImpl implements UsuariosDAO {
 
     /**
      * Elimina un usuario de la base de datos por su número de teléfono.
+     *
      * @param telefono El número de teléfono del usuario que se va a eliminar.
      * @return true si se elimina correctamente, false si no.
      * @throws SQLException Si ocurre un error al ejecutar la eliminación en la base de datos.
@@ -87,6 +91,7 @@ public class UsuarioDAOImpl implements UsuariosDAO {
 
     /**
      * Actualiza la información de un usuario en la base de datos.
+     *
      * @param email       El nuevo correo electrónico del usuario.
      * @param telefono    El nuevo número de teléfono del usuario.
      * @param nomapell    El nuevo nombre y apellido del usuario.
@@ -107,4 +112,18 @@ public class UsuarioDAOImpl implements UsuariosDAO {
         int actualizarDatos = preparedStatement.executeUpdate();
         return actualizarDatos > 0;
     }
+
+    public boolean existeTelefonoUsuario(String telefono) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM usuarios WHERE telefono = ?";
+        PreparedStatement preparedStatement = conectar.prepareStatement(sql);
+        preparedStatement.setString(1, telefono);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            return resultSet.getInt(1) > 0;
+        }
+
+        return false;
+    }
+
 }

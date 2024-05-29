@@ -45,4 +45,5 @@ public interface UsuariosDAO {
      * @throws SQLException Si ocurre un error al ejecutar la actualización en la base de datos.
      */
     boolean actualizarUsuario(String email, String telefono, String nomapell, String direccion, String contrasenna) throws SQLException;
+    boolean existeTelefonoUsuario(String telefono) throws SQLException;
 }

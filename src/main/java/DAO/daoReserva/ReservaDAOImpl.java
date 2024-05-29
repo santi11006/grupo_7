@@ -104,6 +104,8 @@ public class ReservaDAOImpl implements ReservaDAO {
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setDate(1, Date.valueOf(reserva.getFecha_entrada()));
         preparedStatement.setDate(2, Date.valueOf(reserva.getFecha_salida()));
+       /* preparedStatement.setString(1, String.valueOf(reserva.getFecha_entrada()));
+        preparedStatement.setString(2, String.valueOf(reserva.getFecha_entrada()));*/
         preparedStatement.setString(3, reserva.getEmail());
         preparedStatement.setString(4, reserva.getTelefono());
         preparedStatement.setInt(5, reserva.getId_alojamiento());
